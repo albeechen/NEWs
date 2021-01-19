@@ -11,8 +11,15 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+Function: 
+	1. Log In/Up => haven't create authorication
+	2. Account 
+	3. Suggest NEWs
+	4. Persional NEWs
+	5. Add new NEWs
+	6. NEWs Deatail
+
 Front End: 
 	React
 	React Hook
 	Material UI
-"# NEWs" 
