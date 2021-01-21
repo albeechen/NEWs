@@ -12,14 +12,16 @@ Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### Features: 
-	1. Log In/Up => haven't create authorication <br />
-	2. Account <br />
-	3. Suggest NEWs <br />
-	4. Persional NEWs <br />
-	5. Add new NEWs <br />
-	6. NEWs Deatail <br />
+	1. Log In/Up (not include authorization)
+	2. Account
+	   - Security(not include function)
+	   - account setting(not include function)
+	3. Suggest NEWs(Public)
+	4. Persional NEWs(Private) 
+   	   - Add new NEWs 
+       - NEWs Deatail 
 
 ### Front End: 
-	React <br />
-	React Hook <br />
-	Material UI <br />
+	1. React 
+	2. React Hook 
+	3. Material UI
