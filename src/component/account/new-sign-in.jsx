@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
 import CustomButton from '../button/custombutton';
-
+import { StoreContext } from '../../utils/store';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -28,13 +28,22 @@ const useStyles = makeStyles((theme) => ({
     },
     nametext: {
       width:'50%',
-      textDecoration: 'none'
+      textDecoration: 'none',
+    },
+    btn:{
+      width: '100%',
+      marginTop: '100px'
     }
   }));
   
 const NewSignIn = () => {
     const classes = useStyles();
-  
+    const { login: [login, setlogin] } = React.useContext(StoreContext);
+
+    function handleClick(){
+      setlogin(true);
+    }
+
     return (
       <div className={classes.root}>
         <div><h1>Create A New Account</h1></div> 
@@ -43,9 +52,11 @@ const NewSignIn = () => {
           <TextField id="standard-basic" className={classes.nametext} label="Last Name" variant="standard" /> 
           <TextField id="standard-basic" fullWidth label="Password" variant="standard" />
           <TextField id="standard-basic" fullWidth label="Birthday" variant="standard" />
-          <Link className={classes.nametext} to='/'>
-            <CustomButton>Register</CustomButton>
-          </Link>
+          <div className={classes.btn}>
+            <Link className={classes.nametext} to='/'>
+              <CustomButton onClick={handleClick}>Register</CustomButton>
+            </Link>
+          </div>
         </form>
       </div>
     );

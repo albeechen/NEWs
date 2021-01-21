@@ -26,6 +26,10 @@ const useStyles = makeStyles((theme) => ({
   nametext: {
     color: 'white',
     textDecoration: 'none'
+  },
+  btn:{
+    width: '100%',
+    marginTop: '100px'
   }
 }));
 
@@ -37,9 +41,11 @@ const SignInUp = () => {
       <div><h1>Create A New Account</h1></div> 
       <form className={classes.text} noValidate autoComplete="on">
         <TextField id="standard-basic" fullWidth label="Email" variant="standard" />
-        <Link className={classes.nametext} to='/account/new-sign-in'>
-          <CustomButton>Register</CustomButton>
-        </Link>
+        <div className={classes.btn}>
+          <Link className={classes.nametext} to='/account/new-sign-in'>
+            <CustomButton>Next</CustomButton>
+          </Link>
+        </div>
       </form>
     </div>
   );

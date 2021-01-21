@@ -3,11 +3,9 @@ import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import { StoreContext } from '../../utils/store.js';
-
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: '100%',
+        width: '180px',
         backgroundColor:'#083b66',
         color:'white',
         fontWeight: 'bold',
@@ -18,22 +16,14 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-const CustomButton = ({children}) => {
-    const { login: [login, setlogin] } = React.useContext(StoreContext);
-    const classes = useStyles();
- 
-    function handleClick(){
-      setlogin(true);
-    }
+const CustomButton = ({children, ...otherprops}) => {
+    const classes = useStyles(); 
     
     return(
         <button 
-            onClick={handleClick} 
             className={classes.root} 
             variant="contained"
-            style= {{
-                marginTop: '100px'
-            }}
+            {...otherprops}
         >
             {children}
         </button>

@@ -18,7 +18,6 @@ import SignUp from '../component/account/sign-up';
       }, 
       sign:{
         width: '50%',
-
       },
   }));
   
