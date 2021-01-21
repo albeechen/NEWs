@@ -43,7 +43,9 @@ const NewsDetail = (props) => {
  // const [fullWidth, setFullWidth] = React.useState(true);
   //const [maxWidth, setMaxWidth] = React.useState('md');
   const {open, onClose, selectItem} = props;
-
+  //let tmp = selectItem.indexOf('/addnumber/');
+ // let newUrl = selectItem.slice(0, tmp);
+ // console.log(newUrl);
   const handleClose = () => {
     onClose();
   };

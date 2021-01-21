@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
-import { StoreContext } from '../../utils/store.js';
 import CustomButton from '../button/custombutton';
 
 
@@ -35,11 +34,6 @@ const useStyles = makeStyles((theme) => ({
   
 const NewSignIn = () => {
     const classes = useStyles();
-    const { login: [login, setlogin] } = React.useContext(StoreContext);
-  
-    function handleClick(){
-      setlogin(true);
-    }
   
     return (
       <div className={classes.root}>
@@ -50,7 +44,7 @@ const NewSignIn = () => {
           <TextField id="standard-basic" fullWidth label="Password" variant="standard" />
           <TextField id="standard-basic" fullWidth label="Birthday" variant="standard" />
           <Link className={classes.nametext} to='/'>
-            <CustomButton name={'Register'} margin={'100px'}/>
+            <CustomButton>Register</CustomButton>
           </Link>
         </form>
       </div>

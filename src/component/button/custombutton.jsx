@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-const CustomButton = ({name, margin}) => {
+const CustomButton = ({children}) => {
     const { login: [login, setlogin] } = React.useContext(StoreContext);
     const classes = useStyles();
  
@@ -32,10 +32,10 @@ const CustomButton = ({name, margin}) => {
             className={classes.root} 
             variant="contained"
             style= {{
-                marginTop: `${margin}`
+                marginTop: '100px'
             }}
         >
-            {name}
+            {children}
         </button>
     )
 }

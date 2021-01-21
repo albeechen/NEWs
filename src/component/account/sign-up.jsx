@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+
 import CustomButton from '../button/custombutton';
 
 const useStyles = makeStyles((theme) => ({
@@ -36,7 +38,7 @@ const SignInUp = () => {
       <form className={classes.text} noValidate autoComplete="on">
         <TextField id="standard-basic" fullWidth label="Email" variant="standard" />
         <Link className={classes.nametext} to='/account/new-sign-in'>
-          <CustomButton name={'Register'} margin={'100px'}/>
+          <CustomButton>Register</CustomButton>
         </Link>
       </form>
     </div>

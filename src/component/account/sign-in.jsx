@@ -32,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
 const SignInUp = () => {
   const classes = useStyles();
  
-
   return (
     <div className={classes.root}>
       <div><h1>Sign In</h1></div>
@@ -40,7 +39,9 @@ const SignInUp = () => {
         <TextField id="standard-error" fullWidth label="Name" variant="standard" />
         <TextField id="standard-error" fullWidth label="Email" variant="standard" />
         <Link className={classes.nametext} to='/'>
-          <CustomButton name={'Log In'} margin={'100px'}/>
+          <CustomButton style= {{
+            marginTop: '100px'
+          }}>Log In</CustomButton>
         </Link>
       </form>
     </div>

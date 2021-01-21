@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+
 import Header from './component/header';
 import AccountPage from './page/accountpage';
 import ProfilePage from './page/profilepage';

@@ -1,23 +1,22 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+
 
 import { makeStyles } from '@material-ui/core/styles';
 import GroupItemList from '../component/home/groupitem-list';
 import HomeContainer from '../component/home/homecontainer';
 import { StoreContext } from '../utils/store.js';
-import NewsData from '../static/newsdata';
-import PplData from '../static/ppl-data';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
       width: '100%',
-      height: '100vh',
+      height: '100%',
       display: 'flex',
       padding: '30px 0'
     },
     leftsidebar: {
       width: '20%',
-      height: '100%',
+      height: '100vh',
     },
     main: {
       width: '65%',
@@ -47,17 +46,15 @@ const HomePage = () => {
   const { addNews: [addNews, setAddNews] } = React.useContext(StoreContext);
   const classes = useStyles();
   const maintitle = login? 'His/Her NEWs' : 'Suggested NEWs';
-  const newsItem = login? NewsData: PplData;
-  const addData = {
+  const addData = 
+  {
     imageUrl: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
     title: 'Breakfast',
-    id: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e'+ newsItem.length,
+    id: 'addNews_'+ addNews.length,
   }
 
   function handleAddClick (){
-    setAddNews(true);
-    newsItem.push(addData);
-
+    setAddNews([...addNews, addData]);
   }
 
 
@@ -74,7 +71,7 @@ const HomePage = () => {
             <h1 className={classes.title}>{maintitle}</h1>
             <span className={classes.span}>(* These photos is from Material UI)</span>
           </div>
-          <HomeContainer newsItem={newsItem}/>
+          <HomeContainer newsItem={addNews}/>
         </div>     
       </div>
   );

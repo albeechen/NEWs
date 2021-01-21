@@ -12,10 +12,13 @@ import AccountButton from './button/accountbutton';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    textAlign: 'center'
+    textAlign: 'left'
   },
   colorstyle:{
     color: '#083b66',
+  },
+  inputRoot: {
+    color: 'inherit',
   },
   title: {
     flexGrow: 1,
@@ -36,11 +39,10 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       backgroundColor: fade(theme.palette.common.black, 0.1),
     },
-    marginRight: theme.spacing(2),
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(3),
+      marginLeft: theme.spacing(1),
       width: 'auto',
     }
   },
@@ -59,7 +61,20 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       textDecoration: 'underline'
     },
-  }
+  },
+  inputInput: {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      width: '12ch',
+      '&:focus': {
+        width: '20ch',
+      },
+    },
+  },
 }));
 
   const Header = () => {

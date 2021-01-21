@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     height: '100%',
     '&::-webkit-scrollbar': { 
         display: 'none'
-    }
+    },
   }
 });
 
@@ -23,7 +23,7 @@ export default function HomeContainer({newsItem}) {
   const [selectItem, setSelectItem] = useState('');
 
   const handleClick = (event) => {
-    setSelectItem(event.currentTarget.id);
+    setSelectItem(event.currentTarget.getAttribute('imageUrl'));
     setOpendetail(true);
   };
 
@@ -40,12 +40,15 @@ export default function HomeContainer({newsItem}) {
               component={Button}
               id={item.id}
               onClick={handleClick}
+              imageUrl={item.imageUrl}
+              style={{
+                backgroundImage: `url(${item.imageUrl})`,
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat'
+              }}
               >
-              <img
-                  srcSet={`${item.imageUrl}?w=200h=200&fit=crop&auto=format 1x,
-                      ${item.imageUrl}?w=200&h=200fit=crop&auto=format&dpr=2 2x`}
-                  alt={item.title}
-              />
+              
               
           </ImageListItem>
         ))}

@@ -11,16 +11,6 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(1),
       },
       width: '100%',
-      height: '100vh'
-    },
-    small: {
-      width: theme.spacing(3),
-      height: theme.spacing(3),
-    },
-    large: {
-      width: theme.spacing(15),
-      height: theme.spacing(15),
-      fontSize: 28
     },
     info_des:{
       color: '#083b66'
@@ -28,11 +18,12 @@ const useStyles = makeStyles((theme) => ({
     avatar:{
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      height: '100px'
     }
 }));
 
-const AccountProfile = ({ logout, user }) => {
+const AccountProfile = () => {
   const info = {
     userName: 'Annie',
     userEmail: 'exsample@gmail.com',
@@ -45,7 +36,14 @@ const AccountProfile = ({ logout, user }) => {
   return (
       <div className={classes.root}>
         <div className={classes.avatar}>
-          <Avatar className={classes.large} alt={info.userName[0]} src="https://i.ibb.co/6N9WKts/Annie.jpg"/>
+          <Avatar
+            style={{
+              margin: "10px",
+              width: "140px",
+              height: "140px",
+            }} 
+            alt={info.userName[0]} 
+            src="https://i.ibb.co/6N9WKts/Annie.jpg"/>
         </div>
         <div>
           <h1 className={classes.info_des}>Welcome! { info.userName }</h1>
