@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-const CustomButton = ({children, ...otherprops}) => {
+const CustomizedButton = ({children, ...otherprops}) => {
     const classes = useStyles(); 
     
     return(
@@ -30,4 +30,4 @@ const CustomButton = ({children, ...otherprops}) => {
     )
 }
 
-export default CustomButton;
+export default CustomizedButton;

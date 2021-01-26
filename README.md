@@ -12,16 +12,15 @@ Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### Features: 
-	1. Log In(not include authorization)
-       - Log In/Log in with Google account
-       - Create new account(will check if it exists)
-       - Register
+	1. Log In
+       - Log In with Email/Google account
+       - Register: Create new account
 	2. Account
-	   - Security(not include function)
-	   - Account setting(not include function)
+	   - Security(simple page)
+	   - Account setting(simple page)
 	3. Suggest NEWs(Public)
 	4. Persional NEWs(Private) 
-   	   - Add new NEWs 
+   	   - Add new NEWs(fixed News for testing)
        - view NEWs Deatail by clicking image 
 
 
@@ -30,5 +29,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 	2. React Hook 
 	3. Material UI
    
-### Authorization:
-	1. FireBase( The FirebaseKey is not included in this project. Please request it from firebase)
+### Authorization
+	1. FireBase( The FirebaseKey is not included in this project. Please request it from firebase website)
+
+### Back-End
+	1. Personal information

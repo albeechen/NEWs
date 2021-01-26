@@ -5,7 +5,7 @@ import Divider from '@material-ui/core/Divider';
 
 import SignIn from '../component/account/sign-in';
 import SignUp from '../component/account/sign-up';
-
+import NewSignIn from '../component/account/new-sign-in';
 
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -29,7 +29,7 @@ import SignUp from '../component/account/sign-up';
         <div className={classes.root}>
             <SignIn className={classes.sign} />
             <Divider orientation="vertical" flexItem />
-            <SignUp className={classes.sign} /> 
+            <NewSignIn className={classes.sign} /> 
         </div>
     )
 };

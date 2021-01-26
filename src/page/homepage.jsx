@@ -41,11 +41,13 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-const HomePage = () => {
-  const { login: [login, setlogin] } = React.useContext(StoreContext);
+const HomePage = ({login}) => {
+  //const { login: [login, setlogin]} = React.useContext(StoreContext);
   const { addNews: [addNews, setAddNews] } = React.useContext(StoreContext);
   const classes = useStyles();
-  const maintitle = login? 'His/Her NEWs' : 'Suggested NEWs';
+  const loginControl = login;
+  
+  const maintitle = loginControl? 'His/Her NEWs':'Suggested NEWs';
   const addData = 
   {
     imageUrl: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
@@ -54,14 +56,15 @@ const HomePage = () => {
   }
 
   function handleAddClick (){
+    console.log('add News');
     setAddNews([...addNews, addData]);
   }
 
 
   return (
-      <div className={classes.root}>
+    <div className={classes.root}>
         <div className={classes.leftsidebar}>
-          {login ?
+          {loginControl ?
             <GroupItemList handleAddClick={handleAddClick}/>:
             null
           }

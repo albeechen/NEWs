@@ -1,11 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
-import CustomButton from '../button/custombutton';
-import { StoreContext } from '../../utils/store';
+import CustomizedButton from '../customcomponent/customized-button';
+import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -13,11 +13,14 @@ const useStyles = makeStyles((theme) => ({
       width: '100%',
     },
     text: {
-      padding: '50px',
+      /*padding: '50px',
       width: '40%',
       margin: 'auto',
       border: '1px solid #808080',
-      borderRadius: '15px' 
+      borderRadius: '15px' */
+      padding: '50px',
+      width: '60%',
+      margin: 'auto',
     },
     button:{
       marginTop:'100px',
@@ -36,30 +39,56 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
   
-const NewSignIn = () => {
-    const classes = useStyles();
-    const { login: [login, setlogin] } = React.useContext(StoreContext);
+const NewSignIn = props => {
+  const classes = useStyles();
+  const [displayname, setDisplayname] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmpassword, setConfirmpassword] = useState('');
+  const { history } = props;
+  const handleSubmit = async event => {
+    
+    event.preventDefault();
 
-    function handleClick(){
-      setlogin(true);
+    if (password !== confirmpassword) {
+      alert("Passwords don't match");
+      return;
     }
 
-    return (
-      <div className={classes.root}>
-        <div><h1>Create A New Account</h1></div> 
-        <form className={classes.text} noValidate autoComplete="on">
-          <TextField id="standard-error" className={classes.nametext} label="First Name" variant="standard" />
-          <TextField id="standard-basic" className={classes.nametext} label="Last Name" variant="standard" /> 
-          <TextField id="standard-basic" fullWidth label="Password" variant="standard" />
-          <TextField id="standard-basic" fullWidth label="Birthday" variant="standard" />
-          <div className={classes.btn}>
-            <Link className={classes.nametext} to='/'>
-              <CustomButton onClick={handleClick}>Register</CustomButton>
-            </Link>
-          </div>
-        </form>
-      </div>
-    );
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(email, password);
+      
+      createUserProfileDocument(user, { displayname });
+      setDisplayname('');
+      setEmail('');
+      setPassword('');
+      setConfirmpassword('');
+      history.push('/');
+
+    }  catch(error){
+      console.error(error);  
+    }
+
   }
+    
+      
+  return (
+    <div className={classes.root}>
+      <div><h1>Create A New Account</h1></div> 
+      <form className={classes.text} noValidate autoComplete="on" onClick={handleSubmit}>
+        <TextField id="standard-error" fullWidth label="Name" value={displayname} onChange={e=>setDisplayname(e.target.value)}/>
+        <TextField id="standard-basic" fullWidth label="Email" value={email} onChange={e=>setEmail(e.target.value)}/>
+        <TextField id="standard-basic" fullWidth label="Password" type="password" value={password} onChange={e=>setPassword(e.target.value)}/>
+        <TextField id="standard-basic" fullWidth label="Confirm Password" type="password" value={confirmpassword} onChange={e=>setConfirmpassword(e.target.value)}/>
+        <div className={classes.btn} >
+          <Link className={classes.nametext} to='/'>
+            <CustomizedButton type='submit'>Register</CustomizedButton>
+          </Link>
+        </div>
+      </form>
+    </div>
+  );
+    
+}
   
-  export default NewSignIn;
+export default withRouter(NewSignIn);

@@ -32,11 +32,11 @@ const useStyles = makeStyles((theme) => ({
 }))    
 
 
-const AddItem = ({icon, title, handleClick}) => {
+const CustomizedListItem = ({icon, title, ...otherprops}) => {
     const classes = useStyles(); 
-
+    console.log("CustomizedListItem" + title);
     return(
-        <ListItem component={Button} className={classes.btnstyle} onClick={handleClick} >
+        <ListItem key={title} component={Button} className={classes.btnstyle} {...otherprops} >
             <ListItemIcon id="iconstyle" className={classes.iconstyle}>
                 {icon}
             </ListItemIcon>
@@ -45,4 +45,4 @@ const AddItem = ({icon, title, handleClick}) => {
     )
 }
 
-export default AddItem;
+export default CustomizedListItem;

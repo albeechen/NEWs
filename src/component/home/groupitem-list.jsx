@@ -6,8 +6,8 @@ import GroupItem from './groupitem';
 import GroupItemListData from '../../static/groupitem-list-data';
 import Divider from '@material-ui/core/Divider';
 import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
-import AddItem from './addItem';
 
+import CustomizedListItem from '../customcomponent/customized-listitem';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,12 +30,12 @@ const GroupItemList = ({handleAddClick}) => {
    
     return (
         <div className={classes.root}>
-            <AddItem icon={<AddAPhotoIcon />} title={'Add'} handleClick={handleAddClick}/>:
+            <CustomizedListItem icon={<AddAPhotoIcon />} title={'Add'} onClick={handleAddClick}/>:
             <Divider />
             <List> 
                 {
                     items.map( item =>(
-                        <GroupItem icon={item.iconName} title={item.title}/>
+                        <CustomizedListItem id={item.title} icon={item.iconName} title={item.title}/>
                     ))
                 }
             </List>

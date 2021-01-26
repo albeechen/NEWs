@@ -15,7 +15,7 @@ const NewsData =
     title: 'Camera',
     id: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45'
   },
-  /*{
+  {
     imageUrl: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
     title: 'Coffee',
     id: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c'
@@ -30,7 +30,7 @@ const NewsData =
     title: 'Honey',
     id: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62',
   },
-  */
+
   
 ];
 

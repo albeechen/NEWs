@@ -1,12 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
-import CustomButton from '../button/custombutton';
+import CustomizedButton from '../customcomponent/customized-button';
 import { signInWithGoogle } from '../../firebase/firebase.utils';
 import { StoreContext } from '../../utils/store';
+import { auth } from '../../firebase/firebase.utils';
 
 const useStyles = makeStyles((theme) => ({
   spacing: '10',
@@ -32,31 +33,46 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const SignInUp = () => {
+const SignIn = props => {
   const classes = useStyles();
-  const { login: [login, setlogin] } = React.useContext(StoreContext);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { history } = props;
+  const handleSubmit = async event => {
+    event.preventDefault();
 
-  function handleClick(){
-    setlogin(true);
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      setEmail('');
+      setPassword('');
+      history.push('/');
+    }  catch(error){
+      console.error(error);  
+    }
+
   }
- 
+
   return (
     <div className={classes.root}>
       <div><h1>Sign In</h1></div>
-      <form className={classes.text} noValidate autoComplete="on">
-        <TextField id="standard-error" fullWidth label="Name" variant="standard" />
-        <TextField id="standard-error" fullWidth label="Email" variant="standard" />
+      <form className={classes.text} noValidate autoComplete="on" onSubmit={handleSubmit}>
+        <TextField id="standard-basic" fullWidth label="Email" value={email} onChange={e=>setEmail(e.target.value)} />
+        <TextField id="standard-basic" fullWidth label="Password" type="password" value={password} onChange={e=>setPassword(e.target.value)}/>
         <div className={classes.btngroup}>
-          <CustomButton onClick={handleClick}>
+          <CustomizedButton type='submit'>
             <Link className={classes.nametext} to='/'>
               Log In
             </Link>
-          </CustomButton> 
-          <CustomButton type='button' onClick={signInWithGoogle}>Log In With Google</CustomButton>
+          </CustomizedButton> 
+          <CustomizedButton type='button' onClick={signInWithGoogle}>
+            <Link className={classes.nametext} to='/'>
+              Log In With Google
+            </Link>
+          </CustomizedButton>
         </div>
       </form>
     </div>
   );
 }
 
-export default SignInUp;
+export default  withRouter(SignIn);

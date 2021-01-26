@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { makeStyles } from '@material-ui/core/styles';
 
 import PersonalInfo from '../account/personalinfo';
@@ -23,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const AccountProfile = () => {
+const AccountProfile = props => {
   const info = {
     userName: 'Annie',
     userEmail: 'exsample@gmail.com',
@@ -31,7 +32,6 @@ const AccountProfile = () => {
     userlocation: 'California'
   };
   const classes = useStyles();
- 
   
   return (
       <div className={classes.root}>

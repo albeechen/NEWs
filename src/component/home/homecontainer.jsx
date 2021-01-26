@@ -41,15 +41,12 @@ export default function HomeContainer({newsItem}) {
               id={item.id}
               onClick={handleClick}
               imageUrl={item.imageUrl}
-              style={{
-                backgroundImage: `url(${item.imageUrl})`,
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat'
-              }}
               >
-              
-              
+              <img srcSet={`${item.imageUrl}?w=250h=250&fit=crop&auto=format 1x,
+                  ${item.imageUrl}?w=250&h=250fit=crop&auto=format&dpr=2 2x`}
+                  alt={item.iitle} 
+                
+              />
           </ImageListItem>
         ))}
       

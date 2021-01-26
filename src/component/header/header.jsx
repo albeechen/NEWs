@@ -1,21 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { StoreContext } from '../utils/store';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
-import AccountButton from './button/accountbutton';
+
+import { IconButton } from '@material-ui/core';
+import HeaderSelector from '../header/header-selector';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { StoreContext } from '../../utils/store';
+import { auth } from '../../firebase/firebase.utils';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     textAlign: 'left'
   },
-  colorstyle:{
-    color: '#083b66',
+  ListItemText:{
+    color: '#808080',
   },
   inputRoot: {
     color: 'inherit',
@@ -75,12 +79,16 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  colorstyle: {
+    color: '#808080'
+  }
 }));
 
-  const Header = () => {
+
+
+const Header = ({login}) => {
     const classes = useStyles();
-    const { login: [login, setlogin] } = React.useContext(StoreContext);
-    
+
     return ( 
       <div className={classes.root}>
         <AppBar position="static" className={classes.style}>
@@ -88,7 +96,7 @@ const useStyles = makeStyles((theme) => ({
             <Link to="/" className={classes.title}>NEWs</Link>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
-                <SearchIcon className={classes.colorstyle}/>
+                <SearchIcon />
               </div>
               <InputBase
                 placeholder="Search…"
@@ -99,16 +107,20 @@ const useStyles = makeStyles((theme) => ({
                 inputProps={{ 'aria-label': 'search' }}
               />
             </div>
-            {login?
-              <Link to="/account/profile" className={classes.linkstyle}>Account</Link>
-              :
-              <Link to="/account/sign-in-up" className={classes.linkstyle} >Sign In</Link>
-            }
+            {login ? 
+              (
+                <HeaderSelector />
+              ) : (
+                <IconButton>
+                  <Link className={classes.colorstyle} to='/account'>
+                    <AccountCircleIcon/>
+                  </Link>
+                </IconButton>
+            )}
           </Toolbar>
         </AppBar>
       </div>
-    );
-  
+    )
 };
 
 export default Header;

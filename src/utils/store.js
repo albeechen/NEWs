@@ -4,13 +4,13 @@ import PplData from '../static/ppl-data';
 export const StoreContext = React.createContext(null);
 
 export default ({ children }) => {
-  const [login, setlogin] = React.useState(false);
-  const [addNews, setAddNews ] = React.useState(PplData);
+ // const [login, setLogin] = React.useState(false);
+  const [addNews, setAddNews ] = React.useState(NewsData);
   const primaryColor = '#083b66';
   const secondColor = '#cccccc';
 
   const store = {
-    login: [login, setlogin],
+   // login: [login, setLogin],
     addNews: [addNews, setAddNews],
     primaryColor,
     secondColor

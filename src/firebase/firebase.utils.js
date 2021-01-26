@@ -4,7 +4,7 @@ import 'firebase/auth';
 
 import FirebaseKey from '../firebase-key';
 
-const firebaseConfig = {
+const config = {
     apiKey: `${FirebaseKey}`,
     authDomain: "news-social-db.firebaseapp.com",
     projectId: "news-social-db",
@@ -14,17 +14,47 @@ const firebaseConfig = {
     measurementId: "G-4FDM0W19S2"
 };
 
+firebase.initializeApp(config);
 
-firebase.initializeApp(firebaseConfig);
 
 
+export const createUserProfileDocument = async (userAuth, additionalData) => {
+
+  if (!userAuth) return;
+
+  const userRef = firestore.doc(`users/${userAuth.uid}`);
+
+  const snapShot = await userRef.get();
+  
+  if (!snapShot.exists) {
+    const { displayName, email } = userAuth;
+    const createdAt = new Date();
+
+    try {
+      await userRef.set({
+        displayName,
+        email,
+        createdAt,
+        ...additionalData
+      });
+    } catch (error) {
+      console.log('error creating user', error.message);
+    }
+  }
+  
+  return userRef;
+};
+
+
+    
+      
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
-export const googleProvider = new firebase.auth.GoogleAuthProvider();
-googleProvider.setCustomParameters({ prompt: 'select_account' });
+const provider = new firebase.auth.GoogleAuthProvider();
+provider.setCustomParameters({ prompt: 'select_account' });
 
-export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
+export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 export default firebase;
 

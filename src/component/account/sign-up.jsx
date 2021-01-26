@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
-import CustomButton from '../button/custombutton';
+import CustomizedButton from '../customcomponent/customized-button';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,7 +43,7 @@ const SignInUp = () => {
         <TextField id="standard-basic" fullWidth label="Email" variant="standard" />
         <div className={classes.btn}>
           <Link className={classes.nametext} to='/account/new-sign-in'>
-            <CustomButton>Next</CustomButton>
+            <CustomizedButton>Next</CustomizedButton>
           </Link>
         </div>
       </form>
