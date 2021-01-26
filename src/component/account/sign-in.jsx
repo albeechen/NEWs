@@ -60,9 +60,9 @@ const SignIn = props => {
         <TextField id="standard-basic" fullWidth label="Password" type="password" value={password} onChange={e=>setPassword(e.target.value)}/>
         <div className={classes.btngroup}>
           <CustomizedButton type='submit'>
-            <Link className={classes.nametext} to='/'>
+           
               Log In
-            </Link>
+            
           </CustomizedButton> 
           <CustomizedButton type='button' onClick={signInWithGoogle}>
             <Link className={classes.nametext} to='/'>

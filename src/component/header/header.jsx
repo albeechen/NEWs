@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'; 
 
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -86,9 +87,12 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const Header = ({login}) => {
+const Header = ({currentUser}) => {
     const classes = useStyles();
 
+    console.log("header");
+    console.log(currentUser);
+    console.log(Boolean(currentUser));
     return ( 
       <div className={classes.root}>
         <AppBar position="static" className={classes.style}>
@@ -107,7 +111,7 @@ const Header = ({login}) => {
                 inputProps={{ 'aria-label': 'search' }}
               />
             </div>
-            {login ? 
+            {currentUser ? 
               (
                 <HeaderSelector />
               ) : (
@@ -123,4 +127,8 @@ const Header = ({login}) => {
     )
 };
 
-export default Header;
+const mapStateToProps = state => ({
+  currentUser: state.user.currentUser
+});
+
+export default connect(mapStateToProps)(Header);

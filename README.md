@@ -28,6 +28,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 	1. React 
 	2. React Hook 
 	3. Material UI
+	4. Redux
    
 ### Authorization
 	1. FireBase( The FirebaseKey is not included in this project. Please request it from firebase website)

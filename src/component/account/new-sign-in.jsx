@@ -63,8 +63,7 @@ const NewSignIn = props => {
       setEmail('');
       setPassword('');
       setConfirmpassword('');
-      history.push('/');
-
+      
     }  catch(error){
       console.error(error);  
     }

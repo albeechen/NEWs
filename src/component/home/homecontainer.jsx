@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 import { makeStyles } from '@material-ui/core/styles';
 import ImageList from '@material-ui/core/ImageList';
 import ImageListItem from '@material-ui/core/ImageListItem';
@@ -17,7 +18,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function HomeContainer({newsItem}) {
+const HomeContainer = ({newsItem}) => {
   const classes = useStyles();
   const [opendetail, setOpendetail] = useState(false);
   const [selectItem, setSelectItem] = useState('');
@@ -55,3 +56,7 @@ export default function HomeContainer({newsItem}) {
     </div>
   );
 }
+
+
+
+export default HomeContainer;

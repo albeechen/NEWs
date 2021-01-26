@@ -1,6 +1,6 @@
 import React from 'react';
 
-
+import { connect } from 'react-redux'; 
 import { makeStyles } from '@material-ui/core/styles';
 import GroupItemList from '../component/home/groupitem-list';
 import HomeContainer from '../component/home/homecontainer';
@@ -41,11 +41,11 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-const HomePage = ({login}) => {
+const HomePage = ({currentUser}) => {
   //const { login: [login, setlogin]} = React.useContext(StoreContext);
   const { addNews: [addNews, setAddNews] } = React.useContext(StoreContext);
   const classes = useStyles();
-  const loginControl = login;
+  const loginControl = currentUser;
   
   const maintitle = loginControl? 'His/Her NEWs':'Suggested NEWs';
   const addData = 
@@ -80,4 +80,8 @@ const HomePage = ({login}) => {
   );
 };
 
-export default HomePage;
+const mapStateToProps = state => ({
+  currentUser: state.user.currentUser
+});
+
+export default connect(mapStateToProps)(HomePage);

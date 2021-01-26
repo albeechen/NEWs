@@ -20,7 +20,6 @@ const AccountPage = () => {
         <div className={classes.root}>       
             <Route exact path={'/account/'} component={SignInUpPage} />    
             <Route path={'/account/profile'} component={ProfilePage} />
-            <Route path={'/account/sign-in-up'} component={SignInUpPage} />
             <Route path={'/account/new-sign-in'} component={NewSignIn} />
         </div>
     );
