@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import List from '@material-ui/core/List';
@@ -29,13 +30,17 @@ const PersonalInfo = () => {
     return (
         <Container className={classes.root}>
             <div className={classes.title}>Personal info</div>
-            <List>
+            {infolist? 
+                (<List>
                 {infolist.map((info) => (
-                    <PersonalInfoItem id={info.id} title={info.title}/>
-                ))}
-            </List>
+                    <PersonalInfoItem id={info.id} info={info}/>
+                ))}</List>):
+                null
+            }
         </Container>
     );
 };
 
+
+  
 export default PersonalInfo;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux'; 
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -24,13 +25,9 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const AccountProfile = props => {
-  const info = {
-    userName: 'Annie',
-    userEmail: 'exsample@gmail.com',
-    userBirthday: '11/23/1988',
-    userlocation: 'California'
-  };
+const AccountProfile = ({currentUser}) => {
+  const displayname = currentUser? currentUser.displayName: '';
+   
   const classes = useStyles();
   
   return (
@@ -42,17 +39,21 @@ const AccountProfile = props => {
               width: "140px",
               height: "140px",
             }} 
-            alt={info.userName[0]} 
+            alt={displayname} 
             src="https://i.ibb.co/6N9WKts/Annie.jpg"/>
         </div>
         <div>
-          <h1 className={classes.info_des}>Welcome! { info.userName }</h1>
+          <h1 className={classes.info_des}>Welcome! { displayname }</h1>
         </div>
         <div>
-          <PersonalInfo items={info}/>
+          <PersonalInfo />
         </div>
       </div>
   );
 };
 
-export default AccountProfile;
+const mapStateToProps = state => ({
+  currentUser: state.user.currentUser
+});
+
+export default connect(mapStateToProps)(AccountProfile);

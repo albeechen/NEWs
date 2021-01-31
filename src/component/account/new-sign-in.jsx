@@ -41,16 +41,17 @@ const useStyles = makeStyles((theme) => ({
   
 const NewSignIn = props => {
   const classes = useStyles();
-  const [displayname, setDisplayname] = useState('');
+  const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmpassword, setConfirmpassword] = useState('');
-  const { history } = props;
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [birthday, setBirthday] = useState('');
+
   const handleSubmit = async event => {
     
     event.preventDefault();
 
-    if (password !== confirmpassword) {
+    if (password !== confirmPassword) {
       alert("Passwords don't match");
       return;
     }
@@ -58,11 +59,12 @@ const NewSignIn = props => {
     try {
       const { user } = await auth.createUserWithEmailAndPassword(email, password);
       
-      createUserProfileDocument(user, { displayname });
-      setDisplayname('');
+      createUserProfileDocument(user, { displayName, email, password, birthday});
+      setDisplayName('');
       setEmail('');
       setPassword('');
-      setConfirmpassword('');
+      setConfirmPassword('');
+      setBirthday('');
       
     }  catch(error){
       console.error(error);  
@@ -75,14 +77,12 @@ const NewSignIn = props => {
     <div className={classes.root}>
       <div><h1>Create A New Account</h1></div> 
       <form className={classes.text} noValidate autoComplete="on" onClick={handleSubmit}>
-        <TextField id="standard-error" fullWidth label="Name" value={displayname} onChange={e=>setDisplayname(e.target.value)}/>
-        <TextField id="standard-basic" fullWidth label="Email" value={email} onChange={e=>setEmail(e.target.value)}/>
-        <TextField id="standard-basic" fullWidth label="Password" type="password" value={password} onChange={e=>setPassword(e.target.value)}/>
-        <TextField id="standard-basic" fullWidth label="Confirm Password" type="password" value={confirmpassword} onChange={e=>setConfirmpassword(e.target.value)}/>
+        <TextField id="displayname" fullWidth variant="standard" label="Name" value={displayName} onChange={e=>setDisplayName(e.target.value)}/>
+        <TextField id="standard-basic" fullWidth variant="standard" label="Email" value={email} onChange={e=>setEmail(e.target.value)}/>
+        <TextField id="standard-basic" fullWidth variant="standard" label="Password" type="password" value={password} onChange={e=>setPassword(e.target.value)}/>
+        <TextField id="standard-basic" fullWidth variant="standard" label="Confirm Password" type="password" value={confirmPassword} onChange={e=>setConfirmPassword(e.target.value)}/>
         <div className={classes.btn} >
-          <Link className={classes.nametext} to='/'>
-            <CustomizedButton type='submit'>Register</CustomizedButton>
-          </Link>
+          <CustomizedButton type='submit'>Register</CustomizedButton>
         </div>
       </form>
     </div>

@@ -56,18 +56,12 @@ const SignIn = props => {
     <div className={classes.root}>
       <div><h1>Sign In</h1></div>
       <form className={classes.text} noValidate autoComplete="on" onSubmit={handleSubmit}>
-        <TextField id="standard-basic" fullWidth label="Email" value={email} onChange={e=>setEmail(e.target.value)} />
-        <TextField id="standard-basic" fullWidth label="Password" type="password" value={password} onChange={e=>setPassword(e.target.value)}/>
+        <TextField id="standard-basic" variant="standard" fullWidth label="Email" value={email} onChange={e=>setEmail(e.target.value)} />
+        <TextField id="standard-basic" variant="standard" fullWidth label="Password" type="password" value={password} onChange={e=>setPassword(e.target.value)}/>
         <div className={classes.btngroup}>
-          <CustomizedButton type='submit'>
-           
-              Log In
-            
-          </CustomizedButton> 
+          <CustomizedButton type='submit'>Log In</CustomizedButton> 
           <CustomizedButton type='button' onClick={signInWithGoogle}>
-            <Link className={classes.nametext} to='/'>
-              Log In With Google
-            </Link>
+            Log In With Google
           </CustomizedButton>
         </div>
       </form>

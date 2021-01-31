@@ -42,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const HomePage = ({currentUser}) => {
+  console.log(currentUser);
   //const { login: [login, setlogin]} = React.useContext(StoreContext);
   const { addNews: [addNews, setAddNews] } = React.useContext(StoreContext);
   const classes = useStyles();

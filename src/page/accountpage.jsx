@@ -2,9 +2,11 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
+
 import ProfilePage from './profilepage';
 import SignInUpPage from './sign-in-and-sign-uppage';
 import NewSignIn from '../component/account/new-sign-in';
+import PersonalInfoEdit from '../component/account/personalinfo-edit';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -20,6 +22,7 @@ const AccountPage = () => {
         <div className={classes.root}>       
             <Route exact path={'/account/'} component={SignInUpPage} />    
             <Route path={'/account/profile'} component={ProfilePage} />
+            <Route path={'/account/edit'} component={PersonalInfoEdit} />
             <Route path={'/account/new-sign-in'} component={NewSignIn} />
         </div>
     );

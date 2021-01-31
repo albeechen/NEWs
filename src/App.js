@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import Header from './component/header/header';
 import AccountPage from './page/accountpage';
 import HomePage from './page/homepage';
-import { StoreContext } from '../src/utils/store';
+import ProfilePage from './component/account/accountprofile';
 import { auth, createUserProfileDocument } from '../src/firebase/firebase.utils';
 import { setCurrentUser } from './redux/user/user.actions';
 
@@ -41,8 +41,9 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <Switch>
-          <Route exact path="/" render={() => <HomePage />} />
+          <Route exact path="/" component={HomePage} />
           <Route exact path='/account' render={()=> this.props.currentUser ? (<Redirect to='/' />) : (<AccountPage />) }/>
+          <Route exact path='/account/profile' render={()=> this.props.currentUser ? (<AccountPage />) : (<Redirect to='/account' />) }/>       
         </Switch>
       </div>
     )

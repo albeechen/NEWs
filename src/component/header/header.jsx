@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'; 
+import { createStructuredSelector } from 'reselect';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
 
+import { alpha } from '@material-ui/core/styles';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -11,8 +14,7 @@ import InputBase from '@material-ui/core/InputBase';
 import { IconButton } from '@material-ui/core';
 import HeaderSelector from '../header/header-selector';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import { StoreContext } from '../../utils/store';
-import { auth } from '../../firebase/firebase.utils';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -88,11 +90,9 @@ const useStyles = makeStyles((theme) => ({
 
 
 const Header = ({currentUser}) => {
+    //console.log(Boolean(currentUser));
     const classes = useStyles();
-
-    console.log("header");
-    console.log(currentUser);
-    console.log(Boolean(currentUser));
+    
     return ( 
       <div className={classes.root}>
         <AppBar position="static" className={classes.style}>
@@ -127,8 +127,8 @@ const Header = ({currentUser}) => {
     )
 };
 
-const mapStateToProps = state => ({
-  currentUser: state.user.currentUser
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
 });
 
 export default connect(mapStateToProps)(Header);
