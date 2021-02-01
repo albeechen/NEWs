@@ -116,7 +116,7 @@ const Header = ({currentUser}) => {
                 <HeaderSelector />
               ) : (
                 <IconButton>
-                  <Link className={classes.colorstyle} to='/account'>
+                  <Link className={classes.colorstyle} to='/sign-in-and-up'>
                     <AccountCircleIcon/>
                   </Link>
                 </IconButton>

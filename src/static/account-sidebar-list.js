@@ -2,27 +2,25 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import LockIcon from '@material-ui/icons/Lock';
 import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
 
-
-
 const AccountFunctionList = [
     {
         title: 'Account',
-        id: 'account1',
+        id: 'profile',
         iconName: <AccountBoxIcon/>,
-        linkUrl: '/account/profile'
+        linkUrl: '/account'
     },
     {
         title: 'Security',
-        id: 'account2',
+        id: 'security',
         iconName: <LockIcon/>,
-        linkUrl: '/account/profile/security'
+        linkUrl: '/account/security',
     },
     {
         title: 'People and Sharing',
-        id: 'account3',
+        id: 'peoplesharing',
         iconName: <SupervisedUserCircleIcon/>,
-        linkUrl: '/account/profile/peoplesharing'
-    },
+        linkUrl: '/account/peoplesharing',
+    }
   
 ];
 

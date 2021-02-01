@@ -14,14 +14,14 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-const SideBar = ({items}) => {
+const SideBar = ({items, setItem}) => {
     const classes = useStyles();
 
     return (
         <div className={classes.root}>
             <List>     
                 {items.map(item => (
-                    <SidebarItem key={item.id} {...item}/>
+                    <SidebarItem key={item.id} {...item} setItem={setItem}/>
                 ))}     
             </List>
         </div>

@@ -91,7 +91,7 @@ const HeaderSelector = () => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
         >
-            <StyledMenuItem component={Link} to='/account/profile'>
+            <StyledMenuItem component={Link} to='/account'>
                 <ListItemText className={classes.listtextitem}>ACCOUNT</ListItemText>
             </StyledMenuItem>
             <StyledMenuItem component={Button} onClick={handleLogout}>

@@ -16,8 +16,9 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
        - Log In with Email/Google account
        - Register: Create new account
 	2. Account
-	   - Security(simple page)
-	   - Account setting(simple page)
+       - Profile: Update persional information
+	   - Security
+	   - Account setting
 	3. Suggest NEWs(Public)
 	4. Persional NEWs(Private) 
    	   - Add new NEWs(fixed News for testing)
@@ -28,7 +29,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 	1. React 
 	2. React Hook 
 	3. Material UI
-	4. Redux
+	4. Redux: Reselect
    
 ### Authorization
 	1. FireBase( The FirebaseKey is not included in this project. Please request it from firebase website)

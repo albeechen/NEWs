@@ -39,13 +39,21 @@ export const PersonalInfoEaxmple = {
 const PersonalInfoItem = ({currentUser, info}) => {
     const classes = useStyles();
     const value = currentUser? currentUser[info.name]:'';
+    
 
     return (
         <ListItem 
             className={classes.root}
             component={NavLink}
             exact
-            to={'/account/edit'}>
+            to={{
+                pathname:'/account/edit',
+                state: {
+                    title:`${info.title}`,
+                    origin: `${value}`
+                }  
+            }}
+            >
             <ListItemText className={classes.style} primary={info.title}/>
             <ListItemText className={classes.valueStyle}>{value}</ListItemText>
             <ChevronRightIcon/>
